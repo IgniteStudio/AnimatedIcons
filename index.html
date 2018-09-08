@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FontAwesome - Animated Icons</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/jquery.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <style>
-        #chain {
-            font-size: 50px;
+        #chain, #battery {
+            font-size: 100px;
         }
     </style>
 </head>
-<body>
-    <div id="chain" class="fa fa-link"></div>
-    <script>
-        $(document).ready(function(){
-            $('#chain').innerHTML = "&#xf0c1;";
 
-        })
+<body>
+    <div id="chain" class="fa"></div>
+    <div id="battery" class="fa"></div>
+    <script>
+        $(document).ready(function() {
+
+            function brakeChain() {
+                let chain = document.getElementById('chain');
+                chain.innerHTML = "&#xf0c1;";
+
+                setTimeout(function() {
+                    chain.innerHTML = "&#xf127;";
+                }, 1000);
+
+            }
+            
+            // call animation
+            brakeChain();
+
+            // Animate Every 2 Seconds
+            setInterval(brakeChain, 2000);
+
+            // Battery Charge Animation
+            function chargeBattery(){
+                let battery = document.getElementById('battery');
+                battery.innerHTML = "&#xf244;";
+                setTimeout(function(){
+                    battery.innerHTML = "&#xf243;";
+                }, 1000);
+                setTimeout(function(){
+                    battery.innerHTML = "&#xf242;";
+                }, 2000);
+                setTimeout(function(){
+                    battery.innerHTML = "&#xf241;";
+                }, 3000);
+                setTimeout(function(){
+                    battery.innerHTML = "&#xf240;";
+                }, 4000);
+
+            }
+
+            // Run Animation
+            chargeBattery();
+
+            setInterval(chargeBattery, 5000);
+
+        });
     </script>
 </body>
+
 </html>
